@@ -8,7 +8,11 @@ class Bottles
   end
 
   def second_stanza(number)
-    "Take one down and pass it around, #{number - 1} bottle#{2 == number ? '' : 's'} of beer on the wall.\n"
+    "Take one down and pass it around, #{number - 1} bottle#{is_bottle_plural?(number)} of beer on the wall.\n"
+  end
+  
+  def is_bottle_plural?(number)
+    2 == number ? '' : 's'
   end
   
 end
