@@ -1,4 +1,8 @@
 class Bottles
+  def song
+    verses(99, 0)
+  end
+  
   ## bounds-checking is left as an exercice for the reader
   def verses(start, stop)
     output = ""
@@ -56,5 +60,6 @@ class Bottles
 end
 
 if __FILE__ == $0
-  puts Bottles.new.verses(99, 97)
+  puts Bottles.new.song
+  puts Bottles.new.song
 end
