@@ -1,6 +1,6 @@
 class Bottles
   def verse(number)
-    return first_stanza(number) + "\n" + second_stanza(number) + "\n"
+    return first_stanza(number) + "\n" + second_stanza(number - 1) + "\n"
   end
   
   def first_stanza(number)
@@ -8,26 +8,22 @@ class Bottles
   end
 
   def second_stanza(number)
-    "Take #{1 == number ? "it" : "one" } down and pass it around, #{several_one_or_zero_bottles(number - 1)} of beer on the wall."
-  end
-  
-  def several_one_or_zero_bottles(number_minus_one)
-    return number_or_no(number_minus_one) + " bottle" + is_bottle_plural?(number_minus_one)
-  end
-  
-  def number_or_no(number_minus_one)
-    if 0 == number_minus_one
-      return 'no more' 
+    if 1 == number
+      "Take one down and pass it around, 1 bottle of beer on the wall."
+    elsif 0 == number
+      "Take it down and pass it around, no more bottles of beer on the wall."
+    elsif -1 == number
+      "Go to the store and buy some more, 99 bottles of beer on the wall."
     else
-      return number_minus_one.to_s
+      "Take one down and pass it around, #{number} bottles of beer on the wall."
     end
   end
-    
   
   def is_bottle_plural?(number)
     if 1 == number
       return ''
     end
+    #TODO: cleanup/refactor
     if 0 == number
       return 's'
     else
