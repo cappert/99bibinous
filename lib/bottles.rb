@@ -1,4 +1,14 @@
 class Bottles
+  ## bounds-checking is left as an exercice for the reader
+  def verses(start, stop)
+    output = ""
+    start.downto(stop) do |n|
+      output << verse(n)
+      output << "\n" unless stop == n
+    end
+    output
+  end
+
   def verse(number)
     return first_stanza(number) + "\n" + second_stanza(number - 1) + "\n"
   end
@@ -46,5 +56,5 @@ class Bottles
 end
 
 if __FILE__ == $0
-  puts Bottles.new.verse(99)
+  puts Bottles.new.verses(99, 97)
 end
