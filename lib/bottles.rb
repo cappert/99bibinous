@@ -4,7 +4,7 @@ class Bottles
   end
   
   def first_stanza(number)
-    "#{number} bottle#{is_bottle_plural?(number)} of beer on the wall, #{number} bottle#{is_bottle_plural?(number)} of beer."
+    "#{number_or_no_more(number, capitalize: true)} bottle#{is_bottle_plural?(number)} of beer on the wall, #{number_or_no_more(number)} bottle#{is_bottle_plural?(number)} of beer."
   end
 
   def second_stanza(number)
@@ -16,6 +16,18 @@ class Bottles
       "Go to the store and buy some more, 99 bottles of beer on the wall."
     else
       "Take one down and pass it around, #{number} bottles of beer on the wall."
+    end
+  end
+  
+  def number_or_no_more(number, capitalize = false)
+    if 0 == number
+      if capitalize
+        "No more"
+      else
+        "no more"
+      end
+    else
+      number.to_s
     end
   end
   
